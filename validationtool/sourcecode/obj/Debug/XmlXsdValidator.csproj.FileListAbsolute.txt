@@ -1,0 +1,10 @@
+C:\Projects\Energi Norge\XmlXsdValidator\XmlXsdValidator\bin\Debug\XmlXsdValidator.exe.config
+C:\Projects\Energi Norge\XmlXsdValidator\XmlXsdValidator\bin\Debug\XmlXsdValidator.exe
+C:\Projects\Energi Norge\XmlXsdValidator\XmlXsdValidator\bin\Debug\XmlXsdValidator.pdb
+C:\Projects\Energi Norge\XmlXsdValidator\XmlXsdValidator\obj\Debug\XmlXsdValidator.ValidateXmlWithXsdForm.resources
+C:\Projects\Energi Norge\XmlXsdValidator\XmlXsdValidator\obj\Debug\XmlXsdValidator.Properties.Resources.resources
+C:\Projects\Energi Norge\XmlXsdValidator\XmlXsdValidator\obj\Debug\XmlXsdValidator.csproj.GenerateResource.cache
+C:\Projects\Energi Norge\XmlXsdValidator\XmlXsdValidator\obj\Debug\XmlXsdValidator.csproj.CoreCompileInputs.cache
+C:\Projects\Energi Norge\XmlXsdValidator\XmlXsdValidator\obj\Debug\XmlXsdValidator.exe
+C:\Projects\Energi Norge\XmlXsdValidator\XmlXsdValidator\obj\Debug\XmlXsdValidator.pdb
+C:\Projects\Energi Norge\XmlXsdValidator\XmlXsdValidator\obj\Debug\XmlXsdValidator.csproj.AssemblyReference.cache

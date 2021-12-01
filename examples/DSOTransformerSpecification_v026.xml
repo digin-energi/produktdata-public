@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:AssetCatalogue xmlns:m="http://digin.no/DIGIN/CIM100Extenstion/1/0#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://digin.no/DIGIN/CIM100Extenstion/1/0# ../Schema/DIGINProfile_iec61968_part4_TransformerProductData_v026.xsd ">
+	<m:ProductAssetModel>
+		<m:mRID>fd5f73f3-622a-4e7d-ac37-b07a642b14e6</m:mRID>
+		<m:Names>
+			<m:name>22_415_500 Model</m:name>
+		</m:Names>
+		<m:AssetSpecification>
+			<m:CoolingInfo>
+				<m:typeOfCooling>ONAN</m:typeOfCooling>
+			</m:CoolingInfo>
+			<m:SoundInfo>
+				<m:minSoundPressureLevel unit="dB">60</m:minSoundPressureLevel>
+			</m:SoundInfo></m:AssetSpecification>
+		<m:AssetInfoContainer>
+			<m:PowerTransformerInfo>
+				<m:kind>transformer</m:kind>
+				<m:TransformerTankInfos>
+					<m:insulationKind>liquid-immersed</m:insulationKind>
+					<m:TransformerEndInfos>
+						<m:connectionKind>D</m:connectionKind>
+						<m:endNumber>1</m:endNumber>
+						<m:ratedS unit="VA" multiplier="k">500</m:ratedS>
+						<m:ratedU unit="V" multiplier="k">22</m:ratedU>
+						<m:EnergisedEndNoLoadTests>
+							<m:loss unit="W">500</m:loss></m:EnergisedEndNoLoadTests>
+						<m:EnergisedEndShortCircuitTests>
+							<m:power unit="VA">4000</m:power>
+							<m:voltage>4</m:voltage></m:EnergisedEndShortCircuitTests></m:TransformerEndInfos>
+					<m:TransformerEndInfos>
+						<m:connectionKind>Yn</m:connectionKind>
+						<m:endNumber>2</m:endNumber>
+						<m:phaseAngleClock>11</m:phaseAngleClock>
+						<m:ratedS unit="VA" multiplier="k">500</m:ratedS>
+						<m:ratedU unit="V">415</m:ratedU></m:TransformerEndInfos>
+				</m:TransformerTankInfos>
+			</m:PowerTransformerInfo>
+			<m:TapChangerInfo>
+				<m:kind>other</m:kind>
+				<m:highStep>7</m:highStep>
+				<m:lowStep>4</m:lowStep>
+				<m:neutralStep>0</m:neutralStep>
+				<m:stepVoltageIncrement>2.5</m:stepVoltageIncrement>
+			</m:TapChangerInfo></m:AssetInfoContainer></m:ProductAssetModel></m:AssetCatalogue>
