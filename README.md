@@ -60,7 +60,7 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+# About The Project
 
 The 'Product data project' is a project under the DIGIN program. Deliverables from this project will enable automated exchange of data related to planning and operation of the electrical grid. The project is working with standard exchange formats for data such as: :
 
@@ -86,7 +86,7 @@ The outcome of the project is:
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- USECASES -->
-### Usecases
+## Usecases
 
 An AssetCatalogue is a collection of information regarding available types of products and materials that are used to build or install assets, to maintain assets or to operate assets.  
 
@@ -107,11 +107,11 @@ An engineer or analytic queries the catalogue and applies the selection rules in
 
 
 <!-- GETTING STARTED -->
-## IEC 61968-4 Scope
+# IEC 61968-4 Scope
 
 This part of IEC 61968 specifies the information content of a set of message types that can be used to support many of the business functions related to records and asset management. Typical uses of the message types defined in this Part of IEC 61968 include network extension planning, copying feeder or other network data between systems, network or diagram edits and asset inspection. Message types defined in other Parts of IEC 61968 may also be relevant to these use cases.
 
-### AssetCatalogue Message
+## AssetCatalogue Message
 
 The AssetCatalogue message contains an information of a Product modelled within ProductAssetModel CIM Class. Following are the assets which can be associated to a ProductAssetModel:
 
@@ -137,7 +137,7 @@ The AssetCatalogue message contains an information of a Product modelled within 
 * Current Transfomers
 * Voltage Transformers
 
-### DIGIN Extensions
+## DIGIN Extensions
 In this project, for the two above mentioned scenarios - ProductShipmentCatalogue and ProductRequirementCatalogue, the metamodel extensions are being developed by the DIGIN team after deep consideration on the concerns of the Distribution System Operators (DSOs) and vendors. 
 
 The extensions developed within DIGIN Produktdata workstream have ***http://digin.no/DIGIN/CIM100Extension/1/0#*** namespace. 
@@ -145,233 +145,95 @@ The extensions developed within DIGIN Produktdata workstream have ***http://digi
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- ROADMAP -->
-## Roadmap
+# Roadmap
 
 The project has a plan to undergo the enhancement of each aforementioned product asset. Following is the short term development plan of the DIGIN Team and achievements:
 
-#### General Extensions
+## General Extensions
 
-- [x] AssetSpecification Class, which is aggregation of other AssetInfo elements such as electrical, dimensional, protective and audiable parameters. Follow are the UML diagram and detailed XML schema. 
+- [x] AssetSpecification has general extensions related to specification or requirements the product such as electrical, dimensional, protective and audiable parameters. Follow are the UML diagram and detailed XML schema. 
 
 
 <ol><details><ul>
-<details><summary>UML Class Diagram</summary><p>
-<p align="center"><img src="images/AssetSpecification.png" width="500" ></p>
-</p></details>
 
-<details><summary>AssetSpecification Class</summary><p>
+### **UML Class Diagram**
+<p align="center"><img src="images/AssetSpecification.png" width="1000" ></p>
 
-```xml
-<xs:complexType name="AssetSpecification" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/AssetSpecification">
-  <xs:annotation>
-    <xs:documentation>AssetSpecification Class, which is aggregation of other AssetInfo elements such as electrical, dimensional, protective and audiable parameters. </xs:documentation>
-    <xs:documentation cimp:category="Stereotype">DIGIN</xs:documentation>
-  </xs:annotation>
-  <xs:complexContent mixed="false">
-    <xs:extension base="m:IdentifiedObject">
-      <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" name="CoolingInfos" type="m:CoolingInfo" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/AssetSpecification.CoolingInfos">
-        </xs:element>
-        <xs:element minOccurs="0" maxOccurs="unbounded" name="MeticInfos" type="m:MetricInfo" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/AssetSpecification.MeticInfos">
-        </xs:element>
-        <xs:element minOccurs="0" maxOccurs="unbounded" name="SoundInfos" type="m:SoundInfo" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/AssetSpecification.SoundInfos">
-        </xs:element>
-        <xs:element minOccurs="0" maxOccurs="unbounded" name="SurfaceTreatmentInfos" type="m:SurfaceTreatmentInfo" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/AssetSpecification.SurfaceTreatmentInfos">
-        </xs:element>
-      </xs:sequence>
-    </xs:extension>
-  </xs:complexContent>
-</xs:complexType>
-```
-</p></details>
+### **AssetSpecificaition**
+A specification or requirements of a product in terms of dimentions or techncial or any other.
 
-<details><summary>CoolingInfo Class </summary><p>
+### **AssetInfoContainer**
+A containment of asset info. It contains the datasheet or nameplate information of assets which are shipped within a single product.
 
-```xml
-<xs:complexType name="CoolingInfo" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/CoolingInfo">
-  <xs:annotation>
-    <xs:documentation>Description of the assets cooling method or principles.</xs:documentation>
-    <xs:documentation cimp:category="Stereotype">DIGIN</xs:documentation>
-  </xs:annotation>
-  <xs:complexContent mixed="false">
-    <xs:extension base="m:AssetInfo">
-      <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="1" name="typeOfCooling" type="xs:string" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/CoolingInfo.typeOfCooling">
-          <xs:annotation>
-            <xs:documentation>Type of transformer cooling class (four letter code ONAN, ONAF etc.) or any other cooling type or system used on the asset. </xs:documentation>
-            <xs:documentation cimp:category="Stereotype">DIGIN</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-      </xs:sequence>
-    </xs:extension>
-  </xs:complexContent>
-</xs:complexType>
-```
-</p></details>
+### **ContextKind**
+Enumeration «enumeration» in package 'DIGINAssetSpecification'
+* ATTRIBUTES
+  * shipping :   Public
+  * installed :   Public
+  * universal :   Public
+  * inStock :   Public
 
-<details><summary>MetricInfo Class</summary><p>
-
-```xml
-<xs:complexType name="MetricInfo" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/MetricInfo">
-  <xs:annotation>
-    <xs:documentation>Dimensions and weight of an asset.</xs:documentation>
-    <xs:documentation cimp:category="Stereotype">DIGIN</xs:documentation>
-  </xs:annotation>
-  <xs:complexContent mixed="false">
-    <xs:extension base="m:AssetInfo">
-      <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="1" name="metricType" type="m:ContextKind" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/MetricInfo.metricType">
-          <xs:annotation>
-            <xs:documentation>The kind of context dimension and weight applies to. </xs:documentation>
-            <xs:documentation cimp:category="Stereotype">DIGIN</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element minOccurs="0" maxOccurs="1" name="productDiameter" type="m:Length" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/MetricInfo.productDiameter">
-          <xs:annotation>
-            <xs:documentation cimp:category="Stereotype">DIGIN</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element minOccurs="0" maxOccurs="1" name="productHieght" type="m:Length" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/MetricInfo.productHieght">
-          <xs:annotation>
-            <xs:documentation cimp:category="Stereotype">DIGIN</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element minOccurs="0" maxOccurs="1" name="productLength" type="m:Length" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/MetricInfo.productLength">
-          <xs:annotation>
-            <xs:documentation cimp:category="Stereotype">DIGIN</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element minOccurs="0" maxOccurs="1" name="productWeight" type="m:Mass" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/MetricInfo.productWeight">
-          <xs:annotation>
-            <xs:documentation cimp:category="Stereotype">DIGIN</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element minOccurs="0" maxOccurs="1" name="productWidth" type="m:Length" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/MetricInfo.productWidth">
-          <xs:annotation>
-            <xs:documentation cimp:category="Stereotype">DIGIN</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-      </xs:sequence>
-    </xs:extension>
-  </xs:complexContent>
-</xs:complexType>
-```
-</p></details>
-
-<details><summary>SoundInfo Class</summary><p>
-
-```xml
-<xs:complexType name="SoundInfo" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/SoundInfo">
-  <xs:annotation>
-    <xs:documentation>Information about protective measures against corrosion used on the asset surface </xs:documentation>
-    <xs:documentation cimp:category="Stereotype">DIGIN</xs:documentation>
-  </xs:annotation>
-  <xs:complexContent mixed="false">
-    <xs:extension base="m:AssetInfo">
-      <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="1" name="minSoundPressureLevel" type="m:Pressure" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/SoundInfo.minSoundPressureLevel">
-          <xs:annotation>
-            <xs:documentation>Lowest possible sound pressure level in dB(A) according to IEC 60076-10 </xs:documentation>
-            <xs:documentation cimp:category="Stereotype">DIGIN</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-      </xs:sequence>
-    </xs:extension>
-  </xs:complexContent>
-</xs:complexType>
-```
-</p></details>
-
-<details><summary>SurfaceTreatmentInfo Class</summary><p>
-
-```xml
-<xs:complexType name="SurfaceTreatmentInfo" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/SurfaceTreatmentInfo">
-  <xs:annotation>
-    <xs:documentation>Information about sound emission from the asset during normal operation.</xs:documentation>
-    <xs:documentation cimp:category="Stereotype">DIGIN</xs:documentation>
-  </xs:annotation>
-  <xs:complexContent mixed="false">
-    <xs:extension base="m:AssetInfo">
-      <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="1" name="galvanizationThickness" type="m:Length" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/SurfaceTreatmentInfo.galvanizationThickness">
-          <xs:annotation>
-            <xs:documentation>Thickness of galvanization on the asset surface.</xs:documentation>
-            <xs:documentation cimp:category="Stereotype">DIGIN</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element minOccurs="0" maxOccurs="1" name="paintThickness" type="m:Length" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/SurfaceTreatmentInfo.paintThickness">
-          <xs:annotation>
-            <xs:documentation>Thickness of paint on the asset surface.</xs:documentation>
-            <xs:documentation cimp:category="Stereotype">DIGIN</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-      </xs:sequence>
-    </xs:extension>
-  </xs:complexContent>
-</xs:complexType>
-```
-</p></details>
-
-<details><summary>ContextKind Enumeration</summary><p>
-
-```xml
-<xs:simpleType name="ContextKind" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/ContextKind">
-  <xs:annotation>
-    <xs:documentation cimp:category="Stereotype" cimp:notes="Specifies an enumerated type">enumeration</xs:documentation>
-    <xs:documentation cimp:category="Stereotype">DIGIN</xs:documentation>
-  </xs:annotation>
-  <xs:restriction base="xs:string">
-    <xs:enumeration value="installed">
-    </xs:enumeration>
-    <xs:enumeration value="inStock">
-    </xs:enumeration>
-    <xs:enumeration value="shipping">
-    </xs:enumeration>
-    <xs:enumeration value="universal">
-    </xs:enumeration>
-  </xs:restriction>
-</xs:simpleType>
-```
-</p></details>
+### **CoolingInfo**
+Description of the assets cooling method or principles.
+* ATTRIBUTES
+  * typeOfCooling : String  Public
+Type of transformer cooling class (four letter code ONAN, ONAF etc.) or any other cooling type or system used on the asset. 
+ 	
+### **DIGINAssetInfo**
+Extension to AssetInfo
+* ATTRIBUTES
+  * functionKind : FunctionKind  Public,
+Specific information of what kind of function the AssetInfo data refers to or are supposed to fulfill. 
+ 	
+### **FunctionKind**
+Specific information of what kind of function the AssetInfo data refers to or are supposed to fulfill. 
+* ATTRIBUTES
+  * breaker :   Circuit breaker function.
+  * currrentTransformer :  Current transformer function.
+  * disconnectingCircuitBreaker :   Disconnecting cricuit breaker function.
+  * disconnectingLoadBreaker :  Disconnecting load breaker function.
+  * disconnector :   Disconnector function.
+  * faultIndicator :   Fault indicator function.
+  * fuse :   Fuse function.
+  * groundDisconnector :   Ground disconnector function.
+  * jumper :   Jumper function.
+  * loadBreakSwitch :   Load break switch function.
+  * petersenCoil :   Petersen coil function.
+  * potentialTransformer :   Potential transformer function.
+  * powerTransformer :   Power transformer function.
+  * seriesCompensator :   Series compensator function.
+  * shuntCompensator :   Shunt compensator function.
+  * surgeArrester :  Surge arrester function.
+  * tapChanger :  Tapchanger function.
+  * thermometer :  Thermometer function.
+  * waveTrap :  Wave trap function.
+ 	
+### **MetricInfo**
+Dimensions and weight of an asset. 
+* ATTRIBUTES
+  *  metricType : ContextKind  Public,
+The kind of context dimension and weight applies to. 
+  * productDiameter : Length  Public,
+  * productHieght : Length  Public,
+  * productLength : Length  Public,
+  * productWeight : Mass  Public,
+  * productWidth : Length  Public,
+ 	
+### **SoundInfo**
+Information about protective measures against corrosion used on the asset surface 
+*ATTRIBUTES
+  * minSoundPressureLevel : Pressure  Public, Lowest possible sound pressure level in dB(A) according to IEC 60076-10 
+ 	
+### **SurfaceTreatmentInfo**
+Information about sound emission from the asset during normal operation.
+* ATTRIBUTES
+  * galvanizationThickness : Length  Public, Thickness of galvanization on the asset surface.
+  * paintThickness : Length  Public, Thickness of paint on the asset surface.
 
 </ul></details></ol>
 
-- [x] AssetInfoContainer Class, which is aggregation two or more AssetInfo contained within a single product. Follow are the UML diagram and detailed XML schema. 
-<ol><details><ul>
 
-
-<details><summary>AssetInfoContainer Class</summary><p>
-
-```xml
-<xs:complexType name="AssetInfoContainer" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/AssetInfoContainer">
-  <xs:annotation>
-    <xs:documentation cimp:category="Stereotype">DIGIN</xs:documentation>
-  </xs:annotation>
-  <xs:complexContent mixed="false">
-    <xs:extension base="m:AssetInfo">
-      <xs:sequence>
-        <xs:choice maxOccurs="unbounded" minOccurs="0"><xs:element minOccurs="0" maxOccurs="unbounded" name="BusbarSectionInfo" type="m:BusbarSectionInfo" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/AssetInfoContainer.AssetInfo">
-        </xs:element><xs:element minOccurs="0" maxOccurs="unbounded" name="BushingInfo" type="m:BushingInfo" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/AssetInfoContainer.AssetInfo">
-        </xs:element><xs:element minOccurs="0" maxOccurs="unbounded" name="CableInfo" type="m:CableInfo" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/AssetInfoContainer.AssetInfo">
-        </xs:element><xs:element minOccurs="0" maxOccurs="unbounded" name="ConcentricNeutralCableInfo" type="m:ConcentricNeutralCableInfo" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/AssetInfoContainer.AssetInfo">
-        </xs:element><xs:element minOccurs="0" maxOccurs="unbounded" name="InterrupterUnitInfo" type="m:InterrupterUnitInfo" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/AssetInfoContainer.AssetInfo">
-        </xs:element><xs:element minOccurs="0" maxOccurs="unbounded" name="OperatingMechanismInfo" type="m:OperatingMechanismInfo" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/AssetInfoContainer.AssetInfo">
-        </xs:element><xs:element minOccurs="0" maxOccurs="unbounded" name="PowerTransformerInfo" type="m:PowerTransformerInfo" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/AssetInfoContainer.AssetInfo">
-        </xs:element><xs:element minOccurs="0" maxOccurs="unbounded" name="ShuntCompensatorInfo" type="m:ShuntCompensatorInfo" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/AssetInfoContainer.AssetInfo">
-        </xs:element><xs:element minOccurs="0" maxOccurs="unbounded" name="SwitchInfo" type="m:SwitchInfo" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/AssetInfoContainer.AssetInfo">
-        </xs:element><xs:element minOccurs="0" maxOccurs="unbounded" name="TapChangerInfo" type="m:TapChangerInfo" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/AssetInfoContainer.AssetInfo">
-        </xs:element><xs:element minOccurs="0" maxOccurs="unbounded" name="TapeShieldCableInfo" type="m:TapeShieldCableInfo" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/AssetInfoContainer.AssetInfo">
-        </xs:element><xs:element minOccurs="0" maxOccurs="unbounded" name="WireInfo" type="m:WireInfo" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/AssetInfoContainer.AssetInfo">
-        </xs:element></xs:choice>
-      </xs:sequence>
-    </xs:extension>
-  </xs:complexContent>
-</xs:complexType>
-```
-</p></details>
-</ul></details></ol>
-
-#### Product Extensions
+## Product Extensions
 
 The DIGIN teams has made a following prioritisation of the development product extentions. The details of the extention in terms of UML diagrams and XML schema are also presented.
 
@@ -383,297 +245,223 @@ Tags related to development
 
 `inprogress` means the given product is in ehnacement phase 
 
+`no extension require` mean there is no foreseen extension associated to the given product 
 
+<!-- Power Transfomer -->
+### **PowerTransformer** 
+> PowerTransformer (`completed`) 
+<ol><ul><details><summary>details</summary><ul>
 
-<!-- Power TRansfomer -->
-1. [x] PowerTransformer 
+### **UML Class Diagram**
+<p align="center"><img src="images/PowerTransformer Product.png" width="1000" ></p>
 
-<ol><ul><details><summary> Transfomer (completed) </summary><ul>
-<details><summary>UML Class Diagram</summary><p>
-<p align="center"><img src="images/PowerTransformer Product.png" width="500" ></p>
-</p></details>
+### **Profile Diagram**
+<p align="center"><img src="images/PowerTransformer Product_profile.png" width="1000" ></p>
 
-<details><summary>TransformerTankInfo Class</summary><p>
+### **DIGINTransformerTankInfo**
+Extension of TransformerTankInfo
+* ATTRIBUTES
+* insolutionType : TransformerTankInsulationKind  Public, Kind of insulation used in the transformer tank.
+ 
+### **TransformerTankInsulationKind**
+Enumeration «DIGIN» in package 'DIGINTransformer'
+* ATTRIBUTES
+  * dry-type :   Public
+  * gas-filled :   Public
+  * liquid-immersed :   Public
 
-```xml
-<xs:complexType name="TransformerTankInfo" sawsdl:modelReference="http://iec.ch/TC57/CIM100#TC57CIM/IEC61968/AssetInfo/TransformerTankInfo">
-  <xs:annotation>
-    <xs:documentation>Set of transformer tank data, from an equipment library.</xs:documentation>
-  </xs:annotation>
-  <xs:sequence>
-    <xs:element minOccurs="0" maxOccurs="1" name="insolutionType" type="m:TransformerTankInsulationKind" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINTransformer/DIGINTransformerTankInfo.insolutionType">
-      <xs:annotation>
-        <xs:documentation>Kind of insulation used in the transformer tank.</xs:documentation>
-        <xs:documentation cimp:category="Stereotype">DIGIN</xs:documentation>
-      </xs:annotation>
-    </xs:element>
-    <xs:element minOccurs="1" maxOccurs="unbounded" name="TransformerEndInfos" type="m:TransformerEndInfo" sawsdl:modelReference="http://iec.ch/TC57/CIM100#TC57CIM/IEC61968/AssetInfo/TransformerTankInfo.TransformerEndInfos">
-      <xs:annotation>
-        <xs:documentation>Data for all the ends described by this transformer tank data.</xs:documentation>
-      </xs:annotation>
-    </xs:element>
-  </xs:sequence>
-</xs:complexType>
-```
-</p></details>
+</ul></details></ol>
 
-<details><summary>TransformerTankInsulationKind Enumeration</summary><p>
-
-```xml
-<xs:simpleType name="TransformerTankInsulationKind" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtDigPro/DIGINTransformer/TransformerTankInsulationKind">
-  <xs:annotation>
-    <xs:documentation cimp:category="Stereotype">DIGIN</xs:documentation>
-    <xs:documentation cimp:category="Stereotype" cimp:notes="Specifies an enumerated type">enumeration</xs:documentation>
-  </xs:annotation>
-  <xs:restriction base="xs:string">
-    <xs:enumeration value="dry-type">
-    </xs:enumeration>
-    <xs:enumeration value="gas-filled">
-    </xs:enumeration>
-    <xs:enumeration value="liquid-immersed">
-    </xs:enumeration>
-  </xs:restriction>
-</xs:simpleType>
-```
-</p></details>
-
-</ul></details></ul></ol>
 
 <!-- End Devices -->
-2. [ ] End Devices
-<ol><ul><details><summary>EndDevice (planned) </summary><ul>
+### **End Devices**
+> EndDevice (`completed`) 
+<ol><ul><details><summary>details</summary><ul>
+
+### **UML Class Diagram**
+<p align="center"><img src="images/DIGINEndDeviceInfo.png" width="1000" ></p>
+
+### **Profile Diagram**
+<p align="center"><img src="images/DIGINEndDeviceInfo_profile.png" width="1000" ></p>
+
+### **ComModuleInfo**
+Communication module data sheet information.
+* ATTRIBUTES
+  * direction : ComDirectionKind  Public
+  * technology : ComTechnologyKind  Public
+
+### **DIGINEndDeviceCapability**
+Extension to EndDeviceCapability
+* ATTRIBUTES
+  * HANPort : Boolean  Public, True if HAN port is available.
+
+### **DIGINEndDeviceInfo**
+Extension to EndDeviceInfo
+* ATTRIBUTES
+  * registerCount : Integer  Public, The number of registers associated with an end device.
+
 </ul></details></ul></ol>
 
 <!-- Lines -->
-3. [ ] Lines
-<ol><ul><details><summary>Conductors</summary><ul>
-</ul></details></ul></ol>
+### **Lines**
+> Cables (`completed`) 
+<ol><ul><details><summary>details</summary><ul>
 
-<ol><ul><details><summary>Cables (inprogress) </summary><ul>
-<details><summary>CableInfo Class</summary><p>
-conductingCrossSection and isSubmarine attributes are added as NEK extension to CableInfo Class.
+### **UML Class Diagram**
+<p align="center"><img src="images/DIGINLine.png" width="1000" ></p>
 
-```xml
-<xs:complexType name="CableInfo" sawsdl:modelReference="http://iec.ch/TC57/CIM100#TC57CIM/IEC61968/AssetInfo/CableInfo">
-  <xs:annotation>
-    <xs:documentation>Cable data.</xs:documentation>
-  </xs:annotation>
-  <xs:complexContent mixed="false">
-    <xs:extension base="m:WireInfo">
-      <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="1" name="conductingCrossSection" type="m:Area" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtFos/NEKLine/NEKCableInfo.conductingCrossSection">
-          <xs:annotation>
-            <xs:documentation>The conduction nominal cross-section area accordance with IEC 60228.</xs:documentation>
-            <xs:documentation cimp:category="Stereotype" cimp:notes="NEK">NEK</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element minOccurs="0" maxOccurs="1" name="constructionKind" type="m:CableConstructionKind" sawsdl:modelReference="http://iec.ch/TC57/CIM100#TC57CIM/IEC61968/AssetInfo/CableInfo.constructionKind">
-          <xs:annotation>
-            <xs:documentation>Kind of construction of this cable.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element minOccurs="0" maxOccurs="1" name="diameterOverCore" type="m:Length" sawsdl:modelReference="http://iec.ch/TC57/CIM100#TC57CIM/IEC61968/AssetInfo/CableInfo.diameterOverCore">
-          <xs:annotation>
-            <xs:documentation>Diameter over the core, including any semi-con screen; should be the insulating layer's inside diameter.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element minOccurs="0" maxOccurs="1" name="diameterOverInsulation" type="m:Length" sawsdl:modelReference="http://iec.ch/TC57/CIM100#TC57CIM/IEC61968/AssetInfo/CableInfo.diameterOverInsulation">
-          <xs:annotation>
-            <xs:documentation>Diameter over the insulating layer, excluding outer screen.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element minOccurs="0" maxOccurs="1" name="diameterOverJacket" type="m:Length" sawsdl:modelReference="http://iec.ch/TC57/CIM100#TC57CIM/IEC61968/AssetInfo/CableInfo.diameterOverJacket">
-          <xs:annotation>
-            <xs:documentation>Diameter over the outermost jacketing layer.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element minOccurs="0" maxOccurs="1" name="diameterOverScreen" type="m:Length" sawsdl:modelReference="http://iec.ch/TC57/CIM100#TC57CIM/IEC61968/AssetInfo/CableInfo.diameterOverScreen">
-          <xs:annotation>
-            <xs:documentation>Diameter over the outer screen; should be the shield's inside diameter.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element minOccurs="0" maxOccurs="1" name="isStrandFill" type="xs:boolean" sawsdl:modelReference="http://iec.ch/TC57/CIM100#TC57CIM/IEC61968/AssetInfo/CableInfo.isStrandFill">
-          <xs:annotation>
-            <xs:documentation>True if wire strands are extruded in a way to fill the voids in the cable.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element minOccurs="0" maxOccurs="1" name="isSubmarine" type="xs:boolean" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtFos/NEKLine/NEKCableInfo.isSubmarine">
-          <xs:annotation>
-            <xs:documentation>Flag to indicate if this is a submarine cable.</xs:documentation>
-            <xs:documentation cimp:category="Stereotype" cimp:notes="NEK">NEK</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element minOccurs="0" maxOccurs="1" name="nominalTemperature" type="m:Temperature" sawsdl:modelReference="http://iec.ch/TC57/CIM100#TC57CIM/IEC61968/AssetInfo/CableInfo.nominalTemperature">
-          <xs:annotation>
-            <xs:documentation>Maximum nominal design operating temperature.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element minOccurs="0" maxOccurs="1" name="outerJacketKind" type="m:CableOuterJacketKind" sawsdl:modelReference="http://iec.ch/TC57/CIM100#TC57CIM/IEC61968/AssetInfo/CableInfo.outerJacketKind">
-          <xs:annotation>
-            <xs:documentation>Kind of outer jacket of this cable.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element minOccurs="0" maxOccurs="1" name="sheathAsNeutral" type="xs:boolean" sawsdl:modelReference="http://iec.ch/TC57/CIM100#TC57CIM/IEC61968/AssetInfo/CableInfo.sheathAsNeutral">
-          <xs:annotation>
-            <xs:documentation>True if sheath / shield is used as a neutral (i.e., bonded).</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-        <xs:element minOccurs="0" maxOccurs="1" name="shieldMaterial" type="m:CableShieldMaterialKind" sawsdl:modelReference="http://iec.ch/TC57/CIM100#TC57CIM/IEC61968/AssetInfo/CableInfo.shieldMaterial">
-          <xs:annotation>
-            <xs:documentation>Material of the shield.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-      </xs:sequence>
-    </xs:extension>
-  </xs:complexContent>
-</xs:complexType>
-```
-</p></details>
+### **Profile Diagram**
+<p align="center"><img src="images/DIGINLine_profile.png" width="1000" ></p>
 
-<details><summary>Wire Class</summary><p>
-nominalTemperature attribute is added as NEK extension the WireInfo Class
+### **BundeledCableShieldKind**
+Enumeration Class
+* ATTRIBUTES
+  * combined :   Public
+  * stranded :   Public
+  * tape :   Public
 
-```xml
-    <xs:extension base="m:WireInfo">
-      <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="1" name="nominalTemperature" type="m:Temperature" sawsdl:modelReference="http://iec.ch/TC57/CIM100#NorwegianCIMExtensions/ExtFos/NEKLine/NEKOverheadWireInfo.nominalTemperature">
-          <xs:annotation>
-            <xs:documentation>Maximum nominal design operating temperature.</xs:documentation>
-            <xs:documentation cimp:category="Stereotype" cimp:notes="NEK">NEK</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-      </xs:sequence>
-    </xs:extension>
-```
-</p></details>
+### **BundledCableConstructionKind**
+Enumeration Class
+* ATTRIBUTES
+  * concentric :   Public
+  * triangle :   Public
+
+### **BundledCableInfo**
+The information of the common outer layer of the multicore cable
+* ATTRIBUTES
+  * armourMaterialType : CableArmourMaterialKind  Public, material of the armour
+  * bundledConstructionKind : BundledCableConstructionKind  Public
+  * innerRadiusFromCentre : Length  Public
+  * phaseReactance50 : ReactancePerLength  Public, Reactance per length at 50Hz.
+  * shieldKind : BundeledCableShieldKind  Public, a kind of shielding. 
+   thicknessArmour : Length  Public, The thickness of the armour.
+  * thicknessInnerJacket : Length  Public, Thickness of the inner jacket. If it doesnot exist, then value shall be 0.
+  * thicknessInnerScreen : Length  Public, Thickness of semi-conducting layer (generally referred to as screen).
+  * thicknessOuterJacket : Length  Public, Thickness of the outer jacket. If it doesnot exist, then value shall be 0.
+  * thicknessShield : Length  Public, The thickness of the shield
+
+### **CableArmourMaterialKind**
+Enumeration Class
+* ATTRIBUTES
+  * galvanizedSteel :   Public
+
+### **DIGINCableInfo**
+Extension of CableInfo
+* ATTRIBUTES
+  * nominalCapacitance : CapacitancePerLength  Public,Nominal capacitance per length of the cable.
+  * ratedShortCircuitCurrent : CurrentFlow  Public, One second rated short circuit current. 
+  * ratedVoltage : Voltage  Public, Rated Voltage
+
+### **DIGINConcentricNeutralCableInfo**
+Extension of  ConcentricNeutralCableInfo 
+* ATTRIBUTES
+  * neutralStrandXAC50 : ReactancePerLength  Public, Concentric neutral reactance at 50hz. It is an AC component.
+
+### **DIGINWireInfo**
+* ATTRIBUTES
+  * totalWeigthPerLength : Length  Public, Total weight per length of a wire.
+  * typeDesignation : String  Public, A string that defines the code of the wire as per the standard EN50182 ( for bare wires) or CENELEC HD 361 S4 (for cables) or any other regional or local standard.
+
+### **MulticoreCableInfo**
+Information of multicore cable.
+
+### **OpticalFibreCableInfo**
+An optical fibre cable
 
 </ul></details></ul></ol>
 
-<ol><ul><details><summary>OverheadLines</summary><ul>
-</ul></details></ul></ol>
+> Conductors
+  
+> OverheadLines (`no extension require`)
 
-<ol><ul><details><summary>EarthGroundWire</summary><ul>
-</ul></details></ul></ol>
+> EarthGroundWire
 
 <!-- Switchgear -->
-4. [ ] Switchgear	
+### **Switchgear**	
 
-<ol><ul><details><summary>Disconnector</summary><ul>
-</ul></details></ul></ol>
+> Disconnector
 
-<ol><ul><details><summary>GroundDisconnector</summary><ul>
-</ul></details></ul></ol>
+> GroundDisconnector
 
-<ol><ul><details><summary>Jumper</summary><ul>
-</ul></details></ul></ol>
+> Jumper
 
-<ol><ul><details><summary>Clamp</summary><ul>
-</ul></details></ul></ol>
+> Clamp
 
-<ol><ul><details><summary>Fuse</summary><ul>
-</ul></details></ul></ol>
+> Fuse
 
-<ol><ul><details><summary>Breaker</summary><ul>
-</ul></details></ul></ol>
+> Breaker
 
-<ol><ul><details><summary>Recloser</summary><ul>
-</ul></details></ul></ol>
+> Recloser
 
-<ol><ul><details><summary>LoadBreakSwitch</summary><ul>
-</ul></details></ul></ol>
+> LoadBreakSwitch
 
-<ol><ul><details><summary>InterrupterUnit</summary><ul>
-</ul></details></ul></ol>
+> InterrupterUnit
 
-<ol><ul><details><summary>OperatingMechanism</summary><ul>
-</ul></details></ul></ol>
+> OperatingMechanism
 
-<ol><ul><details><summary>CircuitBreakers</summary><ul>
-</ul></details></ul></ol>
+> CircuitBreakers
 
-<ol><ul><details><summary>Disconnectors</summary><ul>
-</ul></details></ul></ol>
+> Disconnectors
 
 <!-- Auxiliary Equipment -->
-5. [ ] Auxiliary Equipment	
+### **Auxiliary Equipment**	
 
-<ol><ul><details><summary>CurrentTransformer</summary><ul>
-</ul></details></ul></ol>
+> CurrentTransformer
 
-<ol><ul><details><summary>PostLineSensor</summary><ul>
-</ul></details></ul></ol>
+> PostLineSensor
 
-<ol><ul><details><summary>PotentialTransformer</summary><ul>
-</ul></details></ul></ol>
+> PotentialTransformer
 
-<ol><ul><details><summary>WaveTrap</summary><ul>
-</ul></details></ul></ol>
+> WaveTrap
 
-<ol><ul><details><summary>SurgeArrester</summary><ul>
-</ul></details></ul></ol>
+> SurgeArrester
 
-<ol><ul><details><summary>FaultIndicator</summary><ul>
-</ul></details></ul></ol>
+> FaultIndicator
 
-<ol><ul><details><summary>AirCompressor</summary><ul>
-</ul></details></ul></ol>
+> AirCompressor
 
 <!-- Structure Devices -->
-6. [ ] Structure Devices	
+### **Structure Devices**	
 
-<ol><ul><details><summary>PrefabricatedBuilding</summary><ul>
-</ul></details></ul></ol>
+> PrefabricatedBuilding
 
-<ol><ul><details><summary>CableCabinet</summary><ul>
-</ul></details></ul></ol>
+> CableCabinet
 
-<ol><ul><details><summary>Pole</summary><ul>
-</ul></details></ul></ol>
+> Pole
 
-<ol><ul><details><summary>Crossarm</summary><ul>
-</ul></details></ul></ol>
+> Crossarm
 
-<ol><ul><details><summary>Insulator</summary><ul>
-</ul></details></ul></ol>
+> Insulator
 
 <!-- Connectors -->
-7. [ ] Connectors	
- 
-<ol><ul><details><summary>Connector</summary><ul>
-</ul></details></ul></ol>
- 
-<ol><ul><details><summary>Termination</summary><ul>
-</ul></details></ul></ol>
- 
-<ol><ul><details><summary>Joint</summary><ul>
-</ul></details></ul></ol>
- 
-<ol><ul><details><summary>Bushing</summary><ul>
-</ul></details></ul></ol>
+### **Connectors**	
+
+> Connector
+
+> Termination
+
+> Joint
+
+> Bushing
 
 <!-- Compensator -->
-8. [ ] Compensators	
+### **Compensators**	
 
-<ol><ul><details><summary>SeriesCompensator</summary><ul>
-</ul></details></ul></ol>
+> SeriesCompensator
 
-<ol><ul><details><summary>ShuntCompensator</summary><ul>
-</ul></details></ul></ol>
- 
-<ol><ul><details><summary>PetersenCoil</summary><ul>
-</ul></details></ul></ol>
+> ShuntCompensator
+
+> PetersenCoil
 
 <!-- Protection Equipment -->
-9. [ ] ProtectionEquipment
-<ol><ul><details><summary>ProtectionEquipment</summary><ul>
-</ul></details></ul></ol>
+### **Protection Equipment**
+
+> ProtectionEquipment
 
 <!-- Generators -->
-10. [ ] Generators
-<ol><ul><details><summary>Generators</summary><ul>
-</ul></details></ul></ol>
+### **Generators**
 
-
+> Generators
 
 See the [open issues](https://github.com/digin-energi/produktdata-public/issues) for a full list of proposed features (and known issues).
 
@@ -921,6 +709,9 @@ Following versions are available from DIGIN Produktdata
 
 | Version | Type | Description  | 
 |---|---|---|
+| 041 | `beta` |  assetKind Enumeration in *AssetInfo* is changed to functionKind and an association is created by *AssetInfo* and *Asset* class.| 
+| 040 | `beta` |  MulticoreCableInfo, OpticalFibreCableInfo and BundledCableInfo with its respective enumerations and attributes are extended.| 
+| 030 | `beta` |  EndDevice extension is added. ComModuleInfo a new class added| 
 | 027 | `beta` |  Multiplicity of MetricInfo are changed as pec IEC WG recommendation. minSoundPressureLEvel type is changed to Pressure because we are allowed to changed the initial value and multiplier and symbol. NEK attributes extensions are added to CableInfo, WireInfo, ShuntCompensator, OverheadWireInfo and SwitchInfo. Attribute LifecycleDate in Asset is added. TransformerTest attributes (basePower and temperature) are added.| 
 | 026 | `beta` |  Some attributes are added to Asset class and it is generalized to NEKAsset class to incorporate other relevent attributes. | 
 | 025 | `dev` |  AssetinfoContainer, AssetSpecification and related extension classes e.g. MetricInfo and power transformer product related classes were extended | 
@@ -959,6 +750,9 @@ Following rules shall be used to change the versioning numbers `ABC` :
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/company/digin-energi/
 [product-screenshot]: images/screenshot.png
+
+
+
 
 
 
