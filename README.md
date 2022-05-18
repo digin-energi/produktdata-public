@@ -309,24 +309,25 @@ Extension to EndDeviceInfo
 
 ### **UML Class Diagram**
 <p align="center"><img src="images/DIGINLine.png" width="1000" ></p>
+	
 
 ### **Profile Diagram**
-<p align="center"><img src="images/DIGINLine_profile.png" width="1000" ></p>
 
-### **BundeledCableShieldKind**
+
+### **MulticoreCableShieldKind**
 Enumeration Class
 * ATTRIBUTES
   * combined :   Public
   * stranded :   Public
   * tape :   Public
 
-### **BundledCableConstructionKind**
+### **MulticoreCableConstructionKind**
 Enumeration Class
 * ATTRIBUTES
   * concentric :   Public
   * triangle :   Public
 
-### **BundledCableInfo**
+### **MulticoreCableInfo**
 The information of the common outer layer of the multicore cable
 * ATTRIBUTES
   * armourMaterialType : CableArmourMaterialKind  Public, material of the armour
@@ -362,7 +363,7 @@ Extension of  ConcentricNeutralCableInfo
   * totalWeigthPerLength : Length  Public, Total weight per length of a wire.
   * typeDesignation : String  Public, A string that defines the code of the wire as per the standard EN50182 ( for bare wires) or CENELEC HD 361 S4 (for cables) or any other regional or local standard.
 
-### **MulticoreCableInfo**
+### **BundledCableInfo**
 Information of multicore cable.
 
 ### **OpticalFibreCableInfo**
