@@ -331,7 +331,7 @@ Enumeration Class
 The information of the common outer layer of the multicore cable
 * ATTRIBUTES
   * armourMaterialType : CableArmourMaterialKind  Public, material of the armour
-  * bundledConstructionKind : BundledCableConstructionKind  Public
+  * multicoreConstructionKind : multicoreCableConstructionKind  Public
   * innerRadiusFromCentre : Length  Public
   * phaseReactance50 : ReactancePerLength  Public, Reactance per length at 50Hz.
   * shieldKind : BundeledCableShieldKind  Public, a kind of shielding. 
@@ -364,16 +364,16 @@ Extension of  ConcentricNeutralCableInfo
   * typeDesignation : String  Public, A string that defines the code of the wire as per the standard EN50182 ( for bare wires) or CENELEC HD 361 S4 (for cables) or any other regional or local standard.
 
 ### **BundledCableInfo**
-Information of multicore cable.
+Information of bundled cable.
 
 ### **OpticalFibreCableInfo**
-An optical fibre cable
+An optical fibre cable.
 
 </ul></details></ul></ol>
 
 > Conductors
   
-> OverheadLines (`no extension require`)
+> OverheadLines (`no extension required`)
 
 > EarthGroundWire
 
@@ -443,7 +443,7 @@ An optical fibre cable
 
 > Joint
 
-> Bushing
+> Bushing (`no extension required`)
 
 <!-- Compensator -->
 ### **Compensators**	
