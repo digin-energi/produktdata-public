@@ -334,7 +334,7 @@ The information of the common outer layer of the multicore cable
   * multicoreConstructionKind : multicoreCableConstructionKind  Public
   * innerRadiusFromCentre : Length  Public
   * phaseReactance50 : ReactancePerLength  Public, Reactance per length at 50Hz.
-  * shieldKind : BundeledCableShieldKind  Public, a kind of shielding. 
+  * shieldKind : MulticoreCableShieldKind  Public, a kind of shielding. 
    thicknessArmour : Length  Public, The thickness of the armour.
   * thicknessInnerJacket : Length  Public, Thickness of the inner jacket. If it doesnot exist, then value shall be 0.
   * thicknessInnerScreen : Length  Public, Thickness of semi-conducting layer (generally referred to as screen).
