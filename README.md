@@ -312,8 +312,9 @@ Extension to EndDeviceInfo
 	
 
 ### **Profile Diagram**
+<p align="center"><img src="images/DIGINLine_Profile.png" width="1000" ></p>
 
-
+	
 ### **MulticoreCableShieldKind**
 Enumeration Class
 * ATTRIBUTES
@@ -710,6 +711,7 @@ Following versions are available from DIGIN Produktdata
 
 | Version | Type | Description  | 
 |---|---|---|
+| 042 | `beta` |  Updated naming of MulticoreCabeInfo and BundledCableInfo. Included multicoreConstructionKind attribute in MulticoreCableInfo. Included functionKind, mRID and name attributes for BundledCableInfo.|
 | 041 | `beta` |  assetKind Enumeration in *AssetInfo* is changed to functionKind and an association is created by *AssetInfo* and *Asset* class.| 
 | 040 | `beta` |  MulticoreCableInfo, OpticalFibreCableInfo and BundledCableInfo with its respective enumerations and attributes are extended.| 
 | 030 | `beta` |  EndDevice extension is added. ComModuleInfo a new class added| 
