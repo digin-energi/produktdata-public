@@ -309,11 +309,9 @@ Extension to EndDeviceInfo
 
 ### **UML Class Diagram**
 <p align="center"><img src="images/DIGINLine.png" width="1000" ></p>
-	
 
 ### **Profile Diagram**
 <p align="center"><img src="images/DIGINLine_profile.png" width="1000" ></p>
-
 	
 ### **MulticoreCableShieldKind**
 Enumeration Class
