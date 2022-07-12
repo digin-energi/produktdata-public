@@ -243,9 +243,9 @@ Tags related to development
 
 `planned` means the given product is next target development, and
 
-`inprogress` means the given product is in ehnacement phase 
+`inprogress` means the given product is in enhancement phase 
 
-`no extension require` mean there is no foreseen extension associated to the given product 
+`no extension required` mean there is no foreseen extension associated to the given product 
 
 <!-- Power Transfomer -->
 ### **PowerTransformer** 
