@@ -1203,9 +1203,7 @@ Note: Different meter designs use different methods to arrive at their results. 
     </xs:annotation>
     <xs:complexContent mixed="false">
       <xs:extension base="m:AssetInfo">
-        <xs:sequence>
-
-
+        <xs:sequence>
         	<xs:element minOccurs="0" maxOccurs="unbounded"
         		name="MulticoreCableInfo" type="m:MulticoreCableInfo"
         		sawsdl:modelReference="http://www.iec.ch/cimprofile#NorwegianCIMExtensions/ExtDigPro/DIGINLine/BundledCableInfo.CableInfo">
@@ -1213,8 +1211,7 @@ Note: Different meter designs use different methods to arrive at their results. 
         	<xs:element minOccurs="0" maxOccurs="unbounded"
         		name="OpticalFibreCableInfo" type="m:OpticalFibreCableInfo"
         		sawsdl:modelReference="http://www.iec.ch/cimprofile#NorwegianCIMExtensions/ExtDigPro/DIGINLine/BundledCableInfo.CableInfo">
-        	</xs:element>
-
+        	</xs:element>
         	<xs:element minOccurs="0" maxOccurs="1"
         		name="WireSpacingInfo" type="m:WireSpacingInfo"
         		sawsdl:modelReference="http://www.iec.ch/cimprofile#NorwegianCIMExtensions/ExtDigPro/DIGINLine/BundledCableInfo.WireSpacingInfo">
@@ -3173,16 +3170,11 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
         				An asset of this model.
         			</xs:documentation>
         		</xs:annotation>
-        	</xs:element>
-
+        	</xs:element>
         	<xs:element minOccurs="0" maxOccurs="1"
         		name="AssetSpecification" type="m:AssetSpecification"
         		sawsdl:modelReference="http://www.iec.ch/cimprofile#TC57CIM/IEC61968/Assets/ProductAssetModel.AssetSpecification">
-        	</xs:element>
-
-
-
-
+        	</xs:element>
         	<xs:element minOccurs="0" maxOccurs="1"
         		name="CatalogAssetType" type="m:CatalogAssetType"
         		sawsdl:modelReference="http://www.iec.ch/cimprofile#TC57CIM/IEC61968/Assets/ProductAssetModel.CatalogAssetType">
@@ -3192,10 +3184,7 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
         				model conforms.
         			</xs:documentation>
         		</xs:annotation>
-        	</xs:element>
-
-
-
+        	</xs:element>
         	<xs:element minOccurs="0" maxOccurs="1" name="Manufacturer"
         		type="m:Manufacturer"
         		sawsdl:modelReference="http://www.iec.ch/cimprofile#TC57CIM/IEC61968/Assets/ProductAssetModel.Manufacturer">
@@ -3204,14 +3193,7 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is map
         				Manufacturer of this asset model.
         			</xs:documentation>
         		</xs:annotation>
-        	</xs:element>
-
-
-
-
-
-
-
+        	</xs:element>
         	<xs:choice><xs:element minOccurs="0" maxOccurs="1" name="AssetInfoContainer" type="m:AssetInfoContainer" sawsdl:modelReference="http://www.iec.ch/cimprofile#TC57CIM/IEC61968/Assets/ProductAssetModel.AssetInfo">
         		<xs:annotation>
         			<xs:documentation>
@@ -4428,8 +4410,7 @@ The attribute aliasName is retained because of backwards compatibility between C
         	<xs:element minOccurs="0" maxOccurs="unbounded"
         		name="EndDeviceFunction" type="m:EndDeviceFunction"
         		sawsdl:modelReference="http://www.iec.ch/cimprofile#TC57CIM/IEC61968/Assets/AssetInfo.AssetFunction">
-        	</xs:element>
-
+        	</xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -5218,8 +5199,7 @@ The attribute aliasName is retained because of backwards compatibility between C
   						name="TapChangerInfo" type="m:TapChangerInfo"
   						sawsdl:modelReference="http://www.iec.ch/cimprofile#NorwegianCIMExtensions/ExtDigPro/DIGINAssetSpecification/AssetInfoContainer.AssetInfo">
   					</xs:element>
-  				</xs:choice>
-
+  				</xs:choice>
   			</xs:sequence>
   		</xs:extension>
   	</xs:complexContent>

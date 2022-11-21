@@ -117,25 +117,24 @@ The AssetCatalogue message contains an information of a Product modelled within 
 
 * Power Transformer
 * End Device
-* Circuit Breakers
+* Cables
+* Conductors
+* Earth ground wire
+* Switchgear
 * Disconnectors
 * Fuses
-* Cables
-* Overhead Lines
-* Bushing
-* Earth ground wire
+* Circuit Breakers
+* LoadBreakSwitch
 * Auxiliary Equipment
-* Compensators
-* Conductors
-* Connectors
-* End Devices
-* Generators
-* Protection Devices
-* Structure Devices
-* Switchgear
-* Terminations
 * Current Transfomers
 * Voltage Transformers
+* Structure Devices
+* Connectors
+* Terminations
+* Bushing
+* Compensators
+* Generators
+* Protection Devices
 
 ## DIGIN Extensions
 In this project, for the two above mentioned scenarios - ProductShipmentCatalogue and ProductRequirementCatalogue, the metamodel extensions are being developed by the DIGIN team after deep consideration on the concerns of the Distribution System Operators (DSOs) and vendors. 
@@ -150,14 +149,16 @@ The extensions developed within DIGIN Produktdata workstream have ***http://digi
 The project has a plan to undergo the enhancement of each aforementioned product asset. Following is the short term development plan of the DIGIN Team and achievements:
 
 ## General Extensions
-
-- [x] AssetSpecification has general extensions related to specification or requirements the product such as electrical, dimensional, protective and audiable parameters. Follow are the UML diagram and detailed XML schema. 
-
+### **AssetSpecification**
+AssetSpecification has general extensions related to specification or requirements the product such as electrical, dimensional, protective and audiable parameters. Follow are the UML diagram and detailed XML schema. 
 
 <ol><details><ul>
 
 ### **UML Class Diagram**
-<p align="center"><img src="images/AssetSpecification.png" width="1000" ></p>
+<p align="center"><img src="images/DIGINAssetSpecification.png" width="1000" ></p>
+
+### **Profile Diagram**
+<p align="center"><img src="images/DIGINAssetSpecification_Profile.png" width="1000" ></p>
 
 ### **AssetSpecificaition**
 A specification or requirements of a product in terms of dimentions or techncial or any other.
@@ -173,17 +174,10 @@ Enumeration «enumeration» in package 'DIGINAssetSpecification'
   * universal :   Public
   * inStock :   Public
 
-### **CoolingInfo**
-Description of the assets cooling method or principles.
-* ATTRIBUTES
-  * typeOfCooling : String  Public
-Type of transformer cooling class (four letter code ONAN, ONAF etc.) or any other cooling type or system used on the asset. 
- 	
 ### **DIGINAssetInfo**
 Extension to AssetInfo
 * ATTRIBUTES
-  * functionKind : FunctionKind  Public,
-Specific information of what kind of function the AssetInfo data refers to or are supposed to fulfill. 
+  * functionKind : FunctionKind  Public, Specific information of what kind of function the AssetInfo data refers to or are supposed to fulfill. 
  	
 ### **FunctionKind**
 Specific information of what kind of function the AssetInfo data refers to or are supposed to fulfill. 
@@ -207,22 +201,29 @@ Specific information of what kind of function the AssetInfo data refers to or ar
   * tapChanger :  Tapchanger function.
   * thermometer :  Thermometer function.
   * waveTrap :  Wave trap function.
- 	
+  * opticalFiber : Optical fiber cable function.
+  * umbilical : Umbilical cable function.
+  * opticalGroundWire : Optical ground wire function.
+
+### **CoolingInfo**
+Description of the assets cooling method or principles.
+* ATTRIBUTES
+  * typeOfCooling : String  Public, Type of transformer cooling class (four letter code ONAN, ONAF etc.) or any other cooling type or system used on the asset. 
+ 	 	
 ### **MetricInfo**
 Dimensions and weight of an asset. 
 * ATTRIBUTES
-  *  metricType : ContextKind  Public,
-The kind of context dimension and weight applies to. 
-  * productDiameter : Length  Public,
-  * productHieght : Length  Public,
-  * productLength : Length  Public,
-  * productWeight : Mass  Public,
-  * productWidth : Length  Public,
+  *  metricType : ContextKind  Public, The kind of context dimension and weight applies to. 
+  * productDiameter : Length  Public, Diameter of product.
+  * productHieght : Length  Public, Height of product.
+  * productLength : Length  Public, Length of product.
+  * productWeight : Mass  Public, Weight of product.
+  * productWidth : Length  Public, Width of product.
  	
 ### **SoundInfo**
-Information about protective measures against corrosion used on the asset surface 
-*ATTRIBUTES
-  * minSoundPressureLevel : Pressure  Public, Lowest possible sound pressure level in dB(A) according to IEC 60076-10 
+Information about protective measures against corrosion used on the asset surface. 
+* ATTRIBUTES
+  * minSoundPressureLevel : Pressure  Public, Lowest possible sound pressure level in dB(A) according to IEC 60076-10. 
  	
 ### **SurfaceTreatmentInfo**
 Information about sound emission from the asset during normal operation.
@@ -230,8 +231,53 @@ Information about sound emission from the asset during normal operation.
   * galvanizationThickness : Length  Public, Thickness of galvanization on the asset surface.
   * paintThickness : Length  Public, Thickness of paint on the asset surface.
 
+### **DIGINMedium**
+Extension to Medium
+* ATTRIBUTES
+  * kind : DIGINMediumKind  Public, Kind of this medium.
+
+### **DIGINMediumKind**
+Replacement of enumeration MediumKind for the purpose of extending MediumKind attributes.
+* ATTRIBUTES
+  * vacuum :  Public, Vacuum.
+
 </ul></details></ol>
 
+### **Domain**
+Domain has general extensions related UnitSymbol and DataTypes. 
+
+<ol><details><ul>
+
+### **UML Class Diagram**
+<p align="center"><img src="images\DIGINDomain.png" width="1000" ></p>
+
+### **DIGINUnitSymbol**
+Replacement of enumeration UnitSymbol for the purpose of extending UnitSymbol attributes.
+* ATTRIBUTES
+  * kgPerm :  Public, Linear density in kilogram/meter (kg/m). The unit can be used to describe the weight per length without taking the cross-section of the object into consideration. 
+
+### **DIGINMass**
+Replacement of DataType Mass for the purpose of correcting the DataType. As the standard has used unit "g", which is not supported. DIGINMass uses unit "kg" which is supported.
+* ATTRIBUTES
+  * multiplier : UnitMuliplier Public 
+  * unit : DIGINUnitSymbol = kg Public
+  * value : Float, Public	
+
+### **Force**
+Force in newtons.
+* ATTRIBUTES
+  * multiplier : UnitMuliplier Public
+  * unit : DIGINUnitSymbol = N Public
+  * value : Float, Public
+	
+### **MassPerLength**	
+Mass per length. Enables specification of weight without details of the cross-section.
+* ATTRIBUTES
+  * multiplier : UnitMuliplier Public 
+  * unit : DIGINUnitSymbol = kgPerm Public
+  * value : Float, Public	
+
+</ul></details></ol>
 
 ## Product Extensions
 
@@ -253,18 +299,18 @@ Tags related to development
 <ol><ul><details><summary>details</summary><ul>
 
 ### **UML Class Diagram**
-<p align="center"><img src="images/PowerTransformer Product.png" width="1000" ></p>
+<p align="center"><img src="images/DIGINTransformerTankInfo.png" width="1000" ></p>
 
 ### **Profile Diagram**
-<p align="center"><img src="images/PowerTransformer Product_profile.png" width="1000" ></p>
+<p align="center"><img src="images/DIGINTransformerTankInfo_Profile.png" width="1000" ></p>
 
 ### **DIGINTransformerTankInfo**
-Extension of TransformerTankInfo
+Extension of TransformerTankInfo.
 * ATTRIBUTES
-* insolutionType : TransformerTankInsulationKind  Public, Kind of insulation used in the transformer tank.
+  * insolutionType : TransformerTankInsulationKind  Public, Kind of insulation used in the transformer tank.
  
 ### **TransformerTankInsulationKind**
-Enumeration «DIGIN» in package 'DIGINTransformer'
+Enumeration «DIGIN» in package 'DIGINTransformer'.
 * ATTRIBUTES
   * dry-type :   Public
   * gas-filled :   Public
@@ -287,16 +333,16 @@ Enumeration «DIGIN» in package 'DIGINTransformer'
 ### **ComModuleInfo**
 Communication module data sheet information.
 * ATTRIBUTES
-  * direction : ComDirectionKind  Public
-  * technology : ComTechnologyKind  Public
+  * direction : ComDirectionKind  Public, Communication module direction.
+  * technology : ComTechnologyKind  Public, Communication module technology kind.
 
 ### **DIGINEndDeviceCapability**
-Extension to EndDeviceCapability
+Extension to EndDeviceCapability.
 * ATTRIBUTES
   * HANPort : Boolean  Public, True if HAN port is available.
 
 ### **DIGINEndDeviceInfo**
-Extension to EndDeviceInfo
+Extension to EndDeviceInfo.
 * ATTRIBUTES
   * registerCount : Integer  Public, The number of registers associated with an end device.
 
@@ -311,106 +357,395 @@ Extension to EndDeviceInfo
 <p align="center"><img src="images/DIGINLine.png" width="1000" ></p>
 
 ### **Profile Diagram**
-<p align="center"><img src="images/DIGINLine_profile.png" width="1000" ></p>
-	
+<p align="center"><img src="images/DIGINLine_Profile.png" width="1000" ></p>
+
 ### **MulticoreCableShieldKind**
-Enumeration Class
+Enumeration Class.
 * ATTRIBUTES
   * combined :   Public
   * stranded :   Public
   * tape :   Public
 
 ### **MulticoreCableConstructionKind**
-Enumeration Class
+Enumeration Class.
 * ATTRIBUTES
-  * concentric :   Public
-  * triangle :   Public
+  * concentric : Public
+  * triangle : Public
 
 ### **MulticoreCableInfo**
-The information of the common outer layer of the multicore cable
+The information of the common outer layer of the multicore cable.
 * ATTRIBUTES
-  * armourMaterialType : CableArmourMaterialKind  Public, material of the armour
-  * multicoreConstructionKind : multicoreCableConstructionKind  Public
-  * innerRadiusFromCentre : Length  Public
+  * armourMaterialType : CableArmourMaterialKind  Public, Material of the armour.
+  * multicoreConstructionKind : MulticoreCableConstructionKind  Public, Kind of construftion of multicore cable.
+  * innerRadiusFromCentre : Length  Public, Inner radius of multicore cable measured from the center.
   * phaseReactance50 : ReactancePerLength  Public, Reactance per length at 50Hz.
-  * shieldKind : MulticoreCableShieldKind  Public, a kind of shielding. 
-   thicknessArmour : Length  Public, The thickness of the armour.
+  * shieldKind : MulticoreCableShieldKind  Public, A kind of shielding. 
+  * thicknessArmour : Length  Public, The thickness of the armour.
   * thicknessInnerJacket : Length  Public, Thickness of the inner jacket. If it doesnot exist, then value shall be 0.
   * thicknessInnerScreen : Length  Public, Thickness of semi-conducting layer (generally referred to as screen).
-  * thicknessOuterJacket : Length  Public, Thickness of the outer jacket. If it doesnot exist, then value shall be 0.
-  * thicknessShield : Length  Public, The thickness of the shield
+  * thicknessOuterJacket : Length  Public, Thickness of the outer jacket. If it does not exist, then value shall be 0.
+  * thicknessShield : Length  Public, The thickness of the shield.
 
 ### **CableArmourMaterialKind**
-Enumeration Class
+Enumeration Class.
 * ATTRIBUTES
-  * galvanizedSteel :   Public
+  * galvanizedSteel : Public
 
 ### **DIGINCableInfo**
-Extension of CableInfo
+Extension of CableInfo.
 * ATTRIBUTES
-  * nominalCapacitance : CapacitancePerLength  Public,Nominal capacitance per length of the cable.
-  * ratedShortCircuitCurrent : CurrentFlow  Public, One second rated short circuit current. 
-  * ratedVoltage : Voltage  Public, Rated Voltage
+  * nominalCapacitance : CapacitancePerLength  Public, Nominal capacitance per length of the cable.
+  * ratedShortCircuitCurrent : CurrentFlow Public, One second rated short circuit current. 
+  * ratedVoltage : Voltage Public, Rated Voltage.
+  * pullForce : Force Public, Maximum applied pulling force.
+  * bendRadius : Length Public, Minimum bending radius.
 
 ### **DIGINConcentricNeutralCableInfo**
-Extension of  ConcentricNeutralCableInfo 
+Extension of ConcentricNeutralCableInfo. 
 * ATTRIBUTES
   * neutralStrandXAC50 : ReactancePerLength  Public, Concentric neutral reactance at 50hz. It is an AC component.
 
 ### **DIGINWireInfo**
+Extension of WireInfo.
 * ATTRIBUTES
-  * totalWeigthPerLength : Length  Public, Total weight per length of a wire.
+  * totalWeigthPerLength : MassPerLength Public, Weight in kg per meter of a wire.
   * typeDesignation : String  Public, A string that defines the code of the wire as per the standard EN50182 ( for bare wires) or CENELEC HD 361 S4 (for cables) or any other regional or local standard.
 
 ### **BundledCableInfo**
 Information of bundled cable.
-
+	
 ### **OpticalFibreCableInfo**
 An optical fibre cable.
 
 </ul></details></ul></ol>
 
-> Conductors
-  
-> OverheadLines (`no extension required`)
+> Conductors (`completed`)
+<ol><ul><details><summary>details</summary><ul>
 
-> EarthGroundWire
+### **UML Class Diagram**
+<p align="center"><img src="images/DIGINLine.png" width="1000" ></p>
 
+### **Profile Diagram**
+<p align="center"><img src="images/DIGINLine_Profile.png" width="1000" ></p>
+
+### **MulticoreCableShieldKind**
+Enumeration Class.
+* ATTRIBUTES
+  * combined :   Public
+  * stranded :   Public
+  * tape :   Public
+
+### **MulticoreCableConstructionKind**
+Enumeration Class.
+* ATTRIBUTES
+  * concentric : Public
+  * triangle : Public
+
+### **MulticoreCableInfo**
+The information of the common outer layer of the multicore cable.
+* ATTRIBUTES
+  * armourMaterialType : CableArmourMaterialKind  Public, Material of the armour.
+  * multicoreConstructionKind : multicoreCableConstructionKind  Public, Kind of construftion of multicore cable.
+  * innerRadiusFromCentre : Length  Public, Inner radius of multicore cable measured from the center.
+  * phaseReactance50 : ReactancePerLength  Public, Reactance per length at 50Hz.
+  * shieldKind : MulticoreCableShieldKind  Public, A kind of shielding. 
+  * thicknessArmour : Length  Public, The thickness of the armour.
+  * thicknessInnerJacket : Length  Public, Thickness of the inner jacket. If it doesnot exist, then value shall be 0.
+  * thicknessInnerScreen : Length  Public, Thickness of semi-conducting layer (generally referred to as screen).
+  * thicknessOuterJacket : Length  Public, Thickness of the outer jacket. If it does not exist, then value shall be 0.
+  * thicknessShield : Length  Public, The thickness of the shield.
+
+### **CableArmourMaterialKind**
+Enumeration Class.
+* ATTRIBUTES
+  * galvanizedSteel : Public
+
+### **DIGINCableInfo**
+Extension of CableInfo.
+* ATTRIBUTES
+  * nominalCapacitance : CapacitancePerLength  Public, Nominal capacitance per length of the cable.
+  * ratedShortCircuitCurrent : CurrentFlow Public, One second rated short circuit current. 
+  * ratedVoltage : Voltage Public, Rated Voltage.
+  * pullForce : Force Public, Maximum applied pulling force.
+  * bendRadius : Length Public, Minimum bending radius.
+
+### **DIGINConcentricNeutralCableInfo**
+Extension of ConcentricNeutralCableInfo. 
+* ATTRIBUTES
+  * neutralStrandXAC50 : ReactancePerLength  Public, Concentric neutral reactance at 50hz. It is an AC component.
+
+### **DIGINWireInfo**
+Extension of WireInfo.
+* ATTRIBUTES
+  * totalWeigthPerLength : MassPerLength Public, Weight in kg per meter of a wire.
+  * typeDesignation : String  Public, A string that defines the code of the wire as per the standard EN50182 ( for bare wires) or CENELEC HD 361 S4 (for cables) or any other regional or local standard.
+
+### **BundledCableInfo**
+Information of bundled cable.
+	
+### **OpticalFibreCableInfo**
+An optical fibre cable.
+
+</ul></details></ul></ol>  
+
+> EarthGroundWire (`completed`)
+<ol><ul><details><summary>details</summary><ul>
+
+### **UML Class Diagram**
+<p align="center"><img src="images/DIGINLine.png" width="1000" ></p>
+
+### **Profile Diagram**
+<p align="center"><img src="images/DIGINLine_Profile.png" width="1000" ></p>
+
+### **MulticoreCableShieldKind**
+Enumeration Class.
+* ATTRIBUTES
+  * combined :   Public
+  * stranded :   Public
+  * tape :   Public
+
+### **MulticoreCableConstructionKind**
+Enumeration Class.
+* ATTRIBUTES
+  * concentric : Public
+  * triangle : Public
+
+### **MulticoreCableInfo**
+The information of the common outer layer of the multicore cable.
+* ATTRIBUTES
+  * armourMaterialType : CableArmourMaterialKind  Public, Material of the armour.
+  * multicoreConstructionKind : multicoreCableConstructionKind  Public, Kind of construftion of multicore cable.
+  * innerRadiusFromCentre : Length  Public, Inner radius of multicore cable measured from the center.
+  * phaseReactance50 : ReactancePerLength  Public, Reactance per length at 50Hz.
+  * shieldKind : MulticoreCableShieldKind  Public, A kind of shielding. 
+  * thicknessArmour : Length  Public, The thickness of the armour.
+  * thicknessInnerJacket : Length  Public, Thickness of the inner jacket. If it doesnot exist, then value shall be 0.
+  * thicknessInnerScreen : Length  Public, Thickness of semi-conducting layer (generally referred to as screen).
+  * thicknessOuterJacket : Length  Public, Thickness of the outer jacket. If it does not exist, then value shall be 0.
+  * thicknessShield : Length  Public, The thickness of the shield.
+
+### **CableArmourMaterialKind**
+Enumeration Class.
+* ATTRIBUTES
+  * galvanizedSteel : Public
+
+### **DIGINCableInfo**
+Extension of CableInfo.
+* ATTRIBUTES
+  * nominalCapacitance : CapacitancePerLength  Public, Nominal capacitance per length of the cable.
+  * ratedShortCircuitCurrent : CurrentFlow Public, One second rated short circuit current. 
+  * ratedVoltage : Voltage Public, Rated Voltage.
+  * pullForce : Force Public, Maximum applied pulling force.
+  * bendRadius : Length Public, Minimum bending radius.
+
+### **DIGINConcentricNeutralCableInfo**
+Extension of ConcentricNeutralCableInfo. 
+* ATTRIBUTES
+  * neutralStrandXAC50 : ReactancePerLength  Public, Concentric neutral reactance at 50hz. It is an AC component.
+
+### **DIGINWireInfo**
+Extension of WireInfo.
+* ATTRIBUTES
+  * totalWeigthPerLength : MassPerLength Public, Weight in kg per meter of a wire.
+  * typeDesignation : String  Public, A string that defines the code of the wire as per the standard EN50182 ( for bare wires) or CENELEC HD 361 S4 (for cables) or any other regional or local standard.
+
+### **BundledCableInfo**
+Information of bundled cable.
+	
+### **OpticalFibreCableInfo**
+An optical fibre cable.
+
+</ul></details></ul></ol>
+	
 <!-- Switchgear -->
 ### **Switchgear**	
 
-> Disconnector
+> Disconnector (`completed`)
 
-> GroundDisconnector
+<ol><ul><details><summary>details</summary><ul>
 
-> Jumper
+### **UML Class Diagram**
+<p align="center"><img src="images/DIGINSwitchInfo.png" width="1000" ></p>
 
-> Clamp
+### **Profile Diagram**
+<p align="center"><img src="images/DIGINSwitchInfo_Profile.png" width="1000" ></p>
 
-> Fuse
+### **DIGINSwitchInfo**
+Extension of SwitchInfo.
+* ATTRIBUTES
+  * capacitiveBreakingCapacity : CurrentFlow Public, The maximum capacitive current a breaking device can break safely under prescribed conditions of use.
+  * gasWeightPerTank : DIGINMass Public, The weight of the gas used per tank.
+  * inductiveBreakingCapacity : CurrentFlow Public, The maximum inductive current a breaking device can break safely under prescribed conditions of use.
+  * powerLoss : ActivePower Public, Switch power loss in Watt.
+  * ratedPeakCurrent : CurrentFlow Public, Maximum prospective peak withstand current.
+  * ratedShortCircuitMakingCapacity : CurrentFlow Public, The maximum short circuit current a breaking device can make safely under prescribed conditions of use.
 
-> Breaker
+### **SwitchTest**
+Switch test info.
+* ATTRIBUTES
+  * temperature : Temperature Public, Temperature at which the test is conducted.
 
-> Recloser
+### **SwitchTestPhaseValue**
+The results and test conditions per switch phase.
+* ATTRIBUTES
+  * closingTime : Seconds Public, The time interval from the closing device (e.g. closing coil) is activated to the instant when the arcing contacts touch each other in all poles.
+  * openingTime : Seconds Public, The time interval from the opening release (e.g. coil) is activated to the instant when the arcing contacts have separated at all poles.
+  * phase : PhaseCode Public, Tested phase.
+  * r : Resistance Public, Phase contact resistance.
+  * testVoltage : Voltage Public, Applied coil voltage under the test.
 
-> LoadBreakSwitch
+</ul></details></ul></ol>	
+	
+> GroundDisconnector (`completed`)
 
-> InterrupterUnit
+<ol><ul><details><summary>details</summary><ul>
 
-> OperatingMechanism
+### **UML Class Diagram**
+<p align="center"><img src="images/DIGINSwitchInfo.png" width="1000" ></p>
 
-> CircuitBreakers
+### **Profile Diagram**
+<p align="center"><img src="images/DIGINSwitchInfo_Profile.png" width="1000" ></p>
 
-> Disconnectors
+### **DIGINSwitchInfo**
+Extension of SwitchInfo.
+* ATTRIBUTES
+  * capacitiveBreakingCapacity : CurrentFlow Public, The maximum capacitive current a breaking device can break safely under prescribed conditions of use.
+  * gasWeightPerTank : DIGINMass Public, The weight of the gas used per tank.
+  * inductiveBreakingCapacity : CurrentFlow Public, The maximum inductive current a breaking device can break safely under prescribed conditions of use.
+  * powerLoss : ActivePower Public, Switch power loss in Watt.
+  * ratedPeakCurrent : CurrentFlow Public, Maximum prospective peak withstand current.
+  * ratedShortCircuitMakingCapacity : CurrentFlow Public, The maximum short circuit current a breaking device can make safely under prescribed conditions of use.
+
+### **SwitchTest**
+Switch test info.
+* ATTRIBUTES
+  * temperature : Temperature Public, Temperature at which the test is conducted.
+
+### **SwitchTestPhaseValue**
+The results and test conditions per switch phase.
+* ATTRIBUTES
+  * closingTime : Seconds Public, The time interval from the closing device (e.g. closing coil) is activated to the instant when the arcing contacts touch each other in all poles.
+  * openingTime : Seconds Public, The time interval from the opening release (e.g. coil) is activated to the instant when the arcing contacts have separated at all poles.
+  * phase : PhaseCode Public, Tested phase.
+  * r : Resistance Public, Phase contact resistance.
+  * testVoltage : Voltage Public, Applied coil voltage under the test.
+
+</ul></details></ul></ol>	
+	
+> Jumper (`inprogress`)
+
+> Fuse (`completed`)
+	
+<ol><ul><details><summary>details</summary><ul>
+
+### **UML Class Diagram**
+<p align="center"><img src="images/DIGINFuseInfo.png" width="1000" ></p>
+
+### **Profile Diagram**
+<p align="center"><img src="images/DIGINFuseInfo_Profile.png" width="1000" ></p>
+	
+### **FuseInfo**
+Fuse datasheet information.
+* ATTRIBUTES
+  * applicationType : String Public, Fuse application type according to standards. Eg. 'gG', 'aM'.
+  * maxBreakingCapacity : CurrentFlow Public, Current in ampere^2 seconds for maximum breaking capacity test at voltage according to IEC 60269-1 and IEC 60269-2 requirements. 
+  * minPreArcingCurrent : CurrentFlow Public, Minimum Pre-arcing current in Amps^2 seconds.
+  * sizeType : String Public, Fuse dimensions according to standards. E.g 'NH1', 'NH00', 'D01' tec.
+	
+### **FuseTimeCurrentCurve**
+Fuse melting times in seconds as a function of prospective current in ampere. Relationship between melting times (Y1-axis) vs. unit current(X-axis).
+
+### **FuseCutOffCurve**
+Maximum cut off current i kA as a function of prospective short circuit current in kA. Relationship between cut off current (Y1-axis) vs. unit prospective short circuit current (X-axis).
+
+</ul></details></ul></ol>	
+	
+> Breaker (`completed`)
+
+<ol><ul><details><summary>details</summary><ul>
+
+### **UML Class Diagram**
+<p align="center"><img src="images/DIGINSwitchInfo.png" width="1000" ></p>
+
+### **Profile Diagram**
+<p align="center"><img src="images/DIGINSwitchInfo_Profile.png" width="1000" ></p>
+
+### **DIGINSwitchInfo**
+Extension of SwitchInfo.
+* ATTRIBUTES
+  * capacitiveBreakingCapacity : CurrentFlow Public, The maximum capacitive current a breaking device can break safely under prescribed conditions of use.
+  * gasWeightPerTank : DIGINMass Public, The weight of the gas used per tank.
+  * inductiveBreakingCapacity : CurrentFlow Public, The maximum inductive current a breaking device can break safely under prescribed conditions of use.
+  * powerLoss : ActivePower Public, Switch power loss in Watt.
+  * ratedPeakCurrent : CurrentFlow Public, Maximum prospective peak withstand current.
+  * ratedShortCircuitMakingCapacity : CurrentFlow Public, The maximum short circuit current a breaking device can make safely under prescribed conditions of use.
+
+### **SwitchTest**
+Switch test info.
+* ATTRIBUTES
+  * temperature : Temperature Public, Temperature at which the test is conducted.
+
+### **SwitchTestPhaseValue**
+The results and test conditions per switch phase.
+* ATTRIBUTES
+  * closingTime : Seconds Public, The time interval from the closing device (e.g. closing coil) is activated to the instant when the arcing contacts touch each other in all poles.
+  * openingTime : Seconds Public, The time interval from the opening release (e.g. coil) is activated to the instant when the arcing contacts have separated at all poles.
+  * phase : PhaseCode Public, Tested phase.
+  * r : Resistance Public, Phase contact resistance.
+  * testVoltage : Voltage Public, Applied coil voltage under the test.
+
+</ul></details></ul></ol>	
+	
+> Recloser (`inprogress`)
+
+> LoadBreakSwitch (`completed`)
+
+<ol><ul><details><summary>details</summary><ul>
+
+### **UML Class Diagram**
+<p align="center"><img src="images/DIGINSwitchInfo.png" width="1000" ></p>
+
+### **Profile Diagram**
+<p align="center"><img src="images/DIGINSwitchInfo_Profile.png" width="1000" ></p>
+
+### **DIGINSwitchInfo**
+Extension of SwitchInfo.
+* ATTRIBUTES
+  * capacitiveBreakingCapacity : CurrentFlow Public, The maximum capacitive current a breaking device can break safely under prescribed conditions of use.
+  * gasWeightPerTank : DIGINMass Public, The weight of the gas used per tank.
+  * inductiveBreakingCapacity : CurrentFlow Public, The maximum inductive current a breaking device can break safely under prescribed conditions of use.
+  * powerLoss : ActivePower Public, Switch power loss in Watt.
+  * ratedPeakCurrent : CurrentFlow Public, Maximum prospective peak withstand current.
+  * ratedShortCircuitMakingCapacity : CurrentFlow Public, The maximum short circuit current a breaking device can make safely under prescribed conditions of use.
+
+### **SwitchTest**
+Switch test info.
+* ATTRIBUTES
+  * temperature : Temperature Public, Temperature at which the test is conducted.
+
+### **SwitchTestPhaseValue**
+The results and test conditions per switch phase.
+* ATTRIBUTES
+  * closingTime : Seconds Public, The time interval from the closing device (e.g. closing coil) is activated to the instant when the arcing contacts touch each other in all poles.
+  * openingTime : Seconds Public, The time interval from the opening release (e.g. coil) is activated to the instant when the arcing contacts have separated at all poles.
+  * phase : PhaseCode Public, Tested phase.
+  * r : Resistance Public, Phase contact resistance.
+  * testVoltage : Voltage Public, Applied coil voltage under the test.
+
+</ul></details></ul></ol>	
+	
+> InterrupterUnit (`no extension required`)
+
+> OperatingMechanism (`no extension required`)
 
 <!-- Auxiliary Equipment -->
 ### **Auxiliary Equipment**	
 
-> CurrentTransformer
+> CurrentTransformer (`planned`)
 
 > PostLineSensor
 
-> PotentialTransformer
+> PotentialTransformer (`planned`)
 
 > WaveTrap
 
@@ -436,22 +771,43 @@ An optical fibre cable.
 <!-- Connectors -->
 ### **Connectors**	
 
-> Connector
+> Connector (`planned`)
+	
+> Clamp (`planned`)
 
-> Termination
+> Termination (`planned`)
 
-> Joint
+> Joint (`planned`)
 
-> Bushing (`no extension required`)
+> Bushing (`completed`)
+
+<ol><ul><details><summary>details</summary><ul>
+
+### **UML Class Diagram**
+<p align="center"><img src="images/DIGINBushing.png" width="1000" ></p>
+
+### **Profile Diagram**
+<p align="center"><img src="images/DIGINBushing_Profile.png" width="1000" ></p>
+
+### **BushingTest**
+Test result for a bushing, such as capacitance and power factor.
+* ATTRIBUTES
+  * c1Capacitance : Capacitance Public, Factory measured capacitance, measured between the power factor tap and the bushing conductor.
+  * c1PowerFactor : PerCent Public, Factory measured insulation power factor, measured between the power factor tap and the bushing conductor.
+  * c2Capacitance : Capacitance Public, Factory measured capacitance measured between the power factor tap and ground.
+  * c2PowerFactor : PerCent Public, Factory measured insulation power factor, measured between the power factor tap and ground.
+  * temperature : Temperature Public, Temperature at which the test is conducted.
+
+</ul></details></ul></ol>	
 
 <!-- Compensator -->
 ### **Compensators**	
 
-> SeriesCompensator
+> SeriesCompensator (`no extension required`)
 
-> ShuntCompensator
+> ShuntCompensator (`no extension required`)
 
-> PetersenCoil
+> PetersenCoil (`inprogress`)
 
 <!-- Protection Equipment -->
 ### **Protection Equipment**
@@ -672,13 +1028,32 @@ xsi:schemaLocation="http://digin.no/DIGIN/CIM100Extenstion/1/0# ../Schema/DIGINP
 ```
 </p></details>
 
-<br />
+<details><summary>Example of Circuitbreaker</summary><p>	
 
+</p></details>
+
+<details><summary>Example of Disconnector</summary><p>	
+
+</p></details>	
+
+<details><summary>Example of Fuse</summary><p>	
+
+</p></details>	
+
+<details><summary>Example of Bushing</summary><p>	
+
+</p></details>		
+
+<details><summary>Example of Cable</summary><p>	
+
+</p></details>		
+	
+<br />
 
 <!-- LICENSE -->
 ## License
 
-Copyright (c) 2019 - 2021 DIGIN Energi, All Rights Reserved.
+Copyright (c) 2019 - 2022 DIGIN Energi, All Rights Reserved.
 
 This program is free software and may be distributed according to the terms of the MIT License.
 
@@ -709,6 +1084,7 @@ Following versions are available from DIGIN Produktdata
 
 | Version | Type | Description  | 
 |---|---|---|
+| 050 | `beta` |  General updates: Medium associated to AssetInfo, removed from Asset. DIGINMediumkind extension with vacuum. Functionkind extended. UnitSymbol extension. Datatypes extensions DIGINMass, Force, MassPerLength. Product updates: Extensions CableInfo, WireInfo, SwitchInfo, FuseInfo, BushingInfo. No extensions required to InterrupterUnitInfo, OperatingMechanismInfo, SeriesCompensatorInfo, ShuntCompensatorInfo. OverheadWireInfo removed.|
 | 042 | `beta` |  Updated naming of MulticoreCabeInfo and BundledCableInfo. Included multicoreConstructionKind attribute in MulticoreCableInfo. Included functionKind, mRID and name attributes for BundledCableInfo.|
 | 041 | `beta` |  assetKind Enumeration in *AssetInfo* is changed to functionKind and an association is created by *AssetInfo* and *Asset* class.| 
 | 040 | `beta` |  MulticoreCableInfo, OpticalFibreCableInfo and BundledCableInfo with its respective enumerations and attributes are extended.| 

@@ -68,8 +68,8 @@ This program is free software and may be distributed according to the terms of t
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[license-shield]: https://img.shields.io/badge/LICENSE-MIT-green
-[license-url]: /License
+[license-shield]: https://img.shields.io/badge/LICENSE-GNU-green
+[license-url]: https://github.com/digin-energi/Produktdata/blob/PowerTransformer/License
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/company/digin-energi/
 [product-screenshot]: images/screenshot.png
