@@ -78,7 +78,8 @@ CIM, the standard for exchange of power systems related information (data), has 
 The outcome of the project is: 
 * A dedicated CIM profile to be used by the DSOs and product suppliers (IEC 61968-4:2019), adapted to the Norwegian industry
 * An increasing number of standard products which can exchange data according to CIM
-* Standard schemas (XML) for exchange of data according to CIM 
+* Standard schemas (XML) for exchange of data according to CIM
+* JSON schemas are available on request, see contact information
 * A validation tool, assuring data transfer and -formats are according to CIM
 
 
