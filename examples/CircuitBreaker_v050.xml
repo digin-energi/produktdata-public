@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:AssetCatalogue xmlns:m="http://digin.no/DIGIN/CIM100Extension/1/0#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://digin.no/DIGIN/CIM100Extension/1/0# ../Schema/DIGINProfile_iec61968_part4_AssetCatalogue_v050.xsd ">
+	<m:ProductAssetModel>
+		<m:Manufacturer>
+			<m:Organisation>
+				<m:Names>
+					<m:name>ABB</m:name>
+				</m:Names>
+			</m:Organisation>
+		</m:Manufacturer>
+		<m:AssetInfoContainer>
+			<m:SwitchInfo>
+				<m:Names>
+					<m:name>UNIGEAR ZS1</m:name>
+				</m:Names>
+				<m:functionKind>breaker</m:functionKind>
+				<m:Medium>
+					<m:kind>vacuum</m:kind>
+				</m:Medium>
+				<m:breakingCapacity unit="A" multiplier="k">31</m:breakingCapacity>
+				<m:ratedCurrent unit="A">630</m:ratedCurrent>
+				<m:ratedFrequency unit="Hz">50</m:ratedFrequency>
+				<m:ratedPeakCurrent unit="A" multiplier="k">81</m:ratedPeakCurrent>
+				<m:ratedVoltage unit="V" multiplier="k">12</m:ratedVoltage>
+			</m:SwitchInfo>
+			<m:OperatingMechanismInfo>
+				<m:mechanismKind>springMotor</m:mechanismKind>
+				<m:motorVoltage unit="V">48</m:motorVoltage>
+			</m:OperatingMechanismInfo>
+		</m:AssetInfoContainer>
+	</m:ProductAssetModel>
+</m:AssetCatalogue>

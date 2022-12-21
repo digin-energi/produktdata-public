@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:AssetCatalogue xmlns:m=http://digin.no/DIGIN/CIM100Extension/1/0# xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance xsi:schemaLocation=http://digin.no/DIGIN/CIM100Extension/1/0# ../Schema/DIGINProfile_iec61968_part4_AssetCatalogue_v050.xsd >
+    <m:ProductAssetModel>
+        <m:Manufacturer>
+            <m:Organisation>
+                <m:Names>
+                        <m:name>Nexans</m:name>
+                </m:Names>
+            </m:Organisation>
+        </m:Manufacturer>
+        <m:BundledCableInfo>
+            <m:mRID>2bb90159-bdfb-11e5-94fa-c8f73332c8f4</m:mRID>
+            <m:Names>
+                <m:name>TFXP-O 1KV</m:name>
+            </m:Names>
+            <m:OpticalFibreCableInfo>
+                <m:functionKind>opticalFiber</m:functionKind>
+                <m:coreRadius unit="m">0.0045</m:coreRadius>
+                <m:diameterOverJacket unit="m">0.012</m:diameterOverJacket>
+            </m:OpticalFibreCableInfo>
+            <m:CableInfo>
+                <m:functionKind>conductor</m:functionKind>
+                <m:insulationMaterial>crosslinkedPolyethylene</m:insulationMaterial>
+                <m:insulationThickness unit="m">0.0017</m:insulationThickness>
+                <m:material>aluminum</m:material>
+                <m:ratedCurrent unit="A">435</m:ratedCurrent>
+                <m:weigthPerLength unit="kgPerm">3.85</m:weigthPerLength>
+                <m:bendRadius unit="m">0.672</m:bendRadius><!--Bendradius when pulling cable-->
+                <m:diameterOverCore unit="m">0.0264</m:diameterOverCore>
+                <m:diameterOverJacket unit="m">0.074</m:diameterOverJacket><!--This is diameter over plastic pipe for OpticalFibre-->
+                <m:isSubmarine>false</m:isSubmarine>
+                <m:outerJacketKind>pvc</m:outerJacketKind>
+                <m:pullForce unit="N">7200</m:pullForce>
+                <m:ratedVoltage unit="V">1000</m:ratedVoltage>
+            </m:CableInfo>
+        </m:BundledCableInfo>
+    </m:ProductAssetModel>
+</m:AssetCatalogue>
+

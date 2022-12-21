@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:AssetCatalogue xmlns:m="http://digin.no/DIGIN/CIM100Extension/1/0#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://digin.no/DIGIN/CIM100Extension/1/0# DIGINProfile_iec61968_part4_AssetCatalogue_v050.xsd ">
+	<m:ProductAssetModel>
+		<m:mRID>970efdec-0c39-4417-a00f-1b713e660b4e</m:mRID>
+		<m:Names>
+			<m:name>Transformer bushing GSA OA</m:name>
+		</m:Names>
+		<m:catalogueNumber>LF130145-BA</m:catalogueNumber>
+		<m:modelNumber>GSA 145-OA 1600/0</m:modelNumber>
+		<m:Asset>
+			<m:mRID>ee5f5a19-e3ee-489c-ad1a-454dc19a9a5c</m:mRID>
+			<m:serialNumber>1ZSCT000000000001/01</m:serialNumber>
+		</m:Asset>
+		<m:AssetSpecification>
+			<m:MetricInfos>
+				<m:productDiameter unit="m" multiplier="m">290</m:productDiameter>
+				<m:productLength unit="m" multiplier="m">1731</m:productLength>
+				<m:productWeight unit="kg">52</m:productWeight>
+			</m:MetricInfos>
+		</m:AssetSpecification>
+		<m:Manufacturer>
+			<m:Organisation>
+				<m:mRID>a0f257ad-e7c3-47ed-86a9-65f642abd1b4</m:mRID>
+				<m:Names>
+					<m:name>ABB AB</m:name>
+				</m:Names>
+			</m:Organisation>
+		</m:Manufacturer>
+		<m:BushingInfo>
+			<m:insulationKind>resinImpregnatedPaper</m:insulationKind>
+			<m:ratedCurrent unit="A">1600</m:ratedCurrent>
+			<m:ratedImpulseWithstandVoltage unit="V" multiplier="k">650</m:ratedImpulseWithstandVoltage>
+			<m:ratedLineToGroundVoltage unit="V" multiplier="k">98</m:ratedLineToGroundVoltage>
+			<m:ratedVoltage unit="V" multiplier="k">170</m:ratedVoltage>
+			<m:BushingTest>
+				<m:Names>
+					<m:name>Testref. 12345</m:name>
+				</m:Names>
+				<m:c1Capacitance unit="F" multiplier="p">243</m:c1Capacitance>
+				<m:c1PowerFactor>0.33</m:c1PowerFactor>
+				<m:c2Capacitance unit="F" multiplier="p">244</m:c2Capacitance>
+				<m:c2PowerFactor>0.91</m:c2PowerFactor>
+				<m:temperature unit="degC">20</m:temperature>
+			</m:BushingTest>
+		</m:BushingInfo>
+	</m:ProductAssetModel>
+</m:AssetCatalogue>

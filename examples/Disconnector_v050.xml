@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:AssetCatalogue xmlns:m="http://digin.no/DIGIN/CIM100Extension/1/0#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://digin.no/DIGIN/CIM100Extension/1/0# ../Schema/DIGINProfile_iec61968_part4_AssetCatalogue_v050.xsd ">
+	<m:ProductAssetModel>
+		<m:Manufacturer>
+			<m:Organisation>
+				<m:Names>
+					<m:name>Producer1</m:name>
+				</m:Names>
+			</m:Organisation>
+		</m:Manufacturer>
+		<m:SwitchInfo xsi:type="m:SwitchInfo">
+			<m:Names>
+				<m:name>Switchtype 1</m:name>
+			</m:Names>
+			<m:functionKind>disconnector</m:functionKind>
+			<m:Medium>
+				<m:kind>SF6</m:kind>
+			</m:Medium>
+			<m:isSinglePhase>false</m:isSinglePhase>
+			<m:ratedCurrent unit="A">630</m:ratedCurrent>
+			<m:ratedFrequency unit="Hz">50</m:ratedFrequency>
+			<m:ratedPeakCurrent unit="A" multiplier="k">25</m:ratedPeakCurrent>
+			<m:ratedShortCircuitCurrent unit="A" multiplier="k">20</m:ratedShortCircuitCurrent>
+			<m:ratedVoltage unit="V" multiplier="k">24</m:ratedVoltage>
+		</m:SwitchInfo>
+	</m:ProductAssetModel>
+</m:AssetCatalogue>
